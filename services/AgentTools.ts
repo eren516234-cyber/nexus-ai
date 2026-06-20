@@ -18,7 +18,9 @@ import * as Location from "expo-location";
 import * as Network from "expo-network";
 import * as Notifications from "expo-notifications";
 import { Accelerometer, Gyroscope } from "expo-sensors";
-import { Audio } from "expo-av";
+// expo-av is optional — may not be available in all builds
+let Audio: typeof import("expo-av").Audio | null = null;
+try { Audio = require("expo-av").Audio; } catch { Audio = null; }
 import { Platform, Share, Vibration } from "react-native";
 
 export interface ToolDefinition {
@@ -352,7 +354,7 @@ const SETTINGS_URLS: Record<string, string> = {
 };
 
 // Recording ref (module-level, to stop from another call)
-let recordingRef: Audio.Recording | null = null;
+let recordingRef: any = null;
 
 // Notes directory
 const NOTES_DIR = `${FileSystem.documentDirectory}nexus-notes/`;
@@ -401,6 +403,7 @@ export async function executeTool(name: string, args: Record<string, string>): P
 
       case "record_audio": {
         if (Platform.OS === "web") return { success: false, error: "Not supported on web", displayText: "Audio recording needs the mobile app" };
+        if (!Audio) return { success: false, error: "Audio module not available", displayText: "🎙️ Audio recording not available in this build" };
         const { status } = await Audio.requestPermissionsAsync();
         if (status !== "granted") return { success: false, error: "Permission denied", displayText: "Microphone permission denied" };
         if (recordingRef) {
