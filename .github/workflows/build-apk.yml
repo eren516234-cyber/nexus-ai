@@ -26,16 +26,12 @@ jobs:
           version: 10
           run_install: false
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
-
-      - name: Cache pnpm store
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/package.json') }}
-          restore-keys: ${{ runner.os }}-pnpm-
+      - name: Use resolved package.json (no catalog: entries)
+        run: |
+          if [ -f package.github.json ]; then
+            cp package.github.json package.json
+            echo "Using resolved package.json"
+          fi
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
@@ -94,9 +90,10 @@ jobs:
         run: |
           APK_PATH="android/app/build/outputs/apk/debug/app-debug.apk"
           APK_SIZE=$(du -sh "$APK_PATH" | cut -f1)
-          echo "## ✅ APK Build Successful!" >> $GITHUB_STEP_SUMMARY
+          echo "## ✅ Nexus AI APK Build Successful!" >> $GITHUB_STEP_SUMMARY
           echo "| | |" >> $GITHUB_STEP_SUMMARY
           echo "|--|--|" >> $GITHUB_STEP_SUMMARY
           echo "| **APK Size** | $APK_SIZE |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Type** | Debug (works on any Android — enable Unknown Sources) |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Download** | Actions tab → nexus-ai-debug-apk |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Type** | Debug (installable on any Android) |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Install** | Enable 'Unknown Sources' in Android Settings |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Download** | Actions tab → Artifacts → nexus-ai-debug-apk |" >> $GITHUB_STEP_SUMMARY
