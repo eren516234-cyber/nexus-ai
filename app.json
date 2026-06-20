@@ -17,24 +17,28 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.nexusai.app",
       "infoPlist": {
-        "NSCameraUsageDescription": "Nexus AI uses your camera to take photos and videos on your command.",
-        "NSMicrophoneUsageDescription": "Nexus AI uses the microphone for voice input and commands.",
-        "NSPhotoLibraryUsageDescription": "Nexus AI accesses your photo library to select and share images.",
-        "NSPhotoLibraryAddUsageDescription": "Nexus AI saves photos and files to your photo library.",
-        "NSLocationWhenInUseUsageDescription": "Nexus AI uses your location to answer 'where am I' and navigation requests.",
-        "NSLocationAlwaysAndWhenInUseUsageDescription": "Nexus AI uses your location to provide location-aware AI assistance.",
-        "NSContactsUsageDescription": "Nexus AI accesses contacts to help you call, message, and email people by name.",
-        "NSCalendarsUsageDescription": "Nexus AI accesses your calendar to schedule events and check your schedule.",
-        "NSRemindersUsageDescription": "Nexus AI creates reminders on your behalf when you ask.",
+        "NSCameraUsageDescription": "Nexus AI uses the camera to take photos and videos on your command.",
+        "NSMicrophoneUsageDescription": "Nexus AI uses the microphone for voice recording and commands.",
+        "NSPhotoLibraryUsageDescription": "Nexus AI accesses your photo library to select images.",
+        "NSPhotoLibraryAddUsageDescription": "Nexus AI saves photos to your photo library.",
+        "NSLocationWhenInUseUsageDescription": "Nexus AI uses your location to answer 'where am I' and navigation.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Nexus AI uses your location for location-aware AI assistance.",
+        "NSContactsUsageDescription": "Nexus AI reads contacts to call and message people by name.",
+        "NSCalendarsUsageDescription": "Nexus AI creates and reads calendar events on your behalf.",
+        "NSRemindersUsageDescription": "Nexus AI sets reminders on your behalf.",
         "NSFaceIDUsageDescription": "Nexus AI uses Face ID for secure authentication.",
         "NSSpeechRecognitionUsageDescription": "Nexus AI uses speech recognition for voice commands.",
-        "NSMotionUsageDescription": "Nexus AI uses motion sensors for activity awareness.",
-        "NSBluetoothAlwaysUsageDescription": "Nexus AI may use Bluetooth for device communication.",
+        "NSMotionUsageDescription": "Nexus AI reads motion sensors for device awareness.",
+        "NSBluetoothAlwaysUsageDescription": "Nexus AI may use Bluetooth for device connectivity.",
+        "NSUserTrackingUsageDescription": "Nexus AI uses tracking for personalized AI assistance.",
         "LSApplicationQueriesSchemes": [
           "instagram", "instagram-stories", "fb", "facebook", "whatsapp",
           "tg", "twitter", "x", "youtube", "maps", "tel", "sms", "mailto",
-          "googlemaps", "comgooglemaps", "snapchat", "tiktok", "spotify",
-          "facetime", "zoom"
+          "googlemaps", "comgooglemaps", "snapchat", "snssdk1233", "spotify",
+          "facetime", "facetime-audio", "zoom", "zoomus", "uber",
+          "netflix", "nflx", "linkedin", "reddit", "discord", "twitch",
+          "pinterest", "googlegmail", "com.amazon.mobile.shopping",
+          "clock-alarm", "App-Prefs"
         ]
       }
     },
@@ -61,11 +65,9 @@
         "android.permission.CALL_PHONE",
         "android.permission.SEND_SMS",
         "android.permission.READ_SMS",
-        "android.permission.RECEIVE_SMS",
         "android.permission.READ_CALENDAR",
         "android.permission.WRITE_CALENDAR",
         "android.permission.VIBRATE",
-        "android.permission.FLASHLIGHT",
         "android.permission.CHANGE_WIFI_STATE",
         "android.permission.ACCESS_WIFI_STATE",
         "android.permission.ACCESS_NETWORK_STATE",
@@ -78,7 +80,12 @@
         "android.permission.USE_FINGERPRINT",
         "android.permission.NFC",
         "android.permission.BODY_SENSORS",
-        "android.permission.ACTIVITY_RECOGNITION"
+        "android.permission.ACTIVITY_RECOGNITION",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.FLASHLIGHT",
+        "android.permission.WAKE_LOCK",
+        "android.permission.RECEIVE_SMS"
       ],
       "intentFilters": [
         {
@@ -111,9 +118,42 @@
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Nexus AI uses your location to answer location-based questions.",
+          "locationAlwaysAndWhenInUsePermission": "Nexus AI uses your location for AI assistance.",
           "isIosBackgroundLocationEnabled": true,
           "isAndroidBackgroundLocationEnabled": true
+        }
+      ],
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Nexus AI accesses contacts so you can call or message people by name."
+        }
+      ],
+      [
+        "expo-calendar",
+        {
+          "calendarPermission": "Nexus AI creates and reads your calendar events.",
+          "remindersPermission": "Nexus AI can create reminders on your behalf."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/icon.png",
+          "color": "#6366F1",
+          "sounds": []
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Nexus AI uses Face ID for secure authentication."
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Nexus AI uses the microphone for voice recording."
         }
       ]
     ],
