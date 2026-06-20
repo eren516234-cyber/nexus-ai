@@ -115,10 +115,6 @@
           "isIosBackgroundLocationEnabled": true,
           "isAndroidBackgroundLocationEnabled": true
         }
-      ],
-      [
-        "expo-clipboard",
-        {}
       ]
     ],
     "experiments": {
