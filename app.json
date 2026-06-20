@@ -1,0 +1,129 @@
+{
+  "expo": {
+    "name": "Nexus AI",
+    "slug": "mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "nexusai",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A0B0F"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.nexusai.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Nexus AI uses your camera to take photos and videos on your command.",
+        "NSMicrophoneUsageDescription": "Nexus AI uses the microphone for voice input and commands.",
+        "NSPhotoLibraryUsageDescription": "Nexus AI accesses your photo library to select and share images.",
+        "NSPhotoLibraryAddUsageDescription": "Nexus AI saves photos and files to your photo library.",
+        "NSLocationWhenInUseUsageDescription": "Nexus AI uses your location to answer 'where am I' and navigation requests.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Nexus AI uses your location to provide location-aware AI assistance.",
+        "NSContactsUsageDescription": "Nexus AI accesses contacts to help you call, message, and email people by name.",
+        "NSCalendarsUsageDescription": "Nexus AI accesses your calendar to schedule events and check your schedule.",
+        "NSRemindersUsageDescription": "Nexus AI creates reminders on your behalf when you ask.",
+        "NSFaceIDUsageDescription": "Nexus AI uses Face ID for secure authentication.",
+        "NSSpeechRecognitionUsageDescription": "Nexus AI uses speech recognition for voice commands.",
+        "NSMotionUsageDescription": "Nexus AI uses motion sensors for activity awareness.",
+        "NSBluetoothAlwaysUsageDescription": "Nexus AI may use Bluetooth for device communication.",
+        "LSApplicationQueriesSchemes": [
+          "instagram", "instagram-stories", "fb", "facebook", "whatsapp",
+          "tg", "twitter", "x", "youtube", "maps", "tel", "sms", "mailto",
+          "googlemaps", "comgooglemaps", "snapchat", "tiktok", "spotify",
+          "facetime", "zoom"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.nexusai.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#0A0B0F"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_MEDIA_AUDIO",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.READ_CONTACTS",
+        "android.permission.WRITE_CONTACTS",
+        "android.permission.READ_CALL_LOG",
+        "android.permission.CALL_PHONE",
+        "android.permission.SEND_SMS",
+        "android.permission.READ_SMS",
+        "android.permission.RECEIVE_SMS",
+        "android.permission.READ_CALENDAR",
+        "android.permission.WRITE_CALENDAR",
+        "android.permission.VIBRATE",
+        "android.permission.FLASHLIGHT",
+        "android.permission.CHANGE_WIFI_STATE",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.INTERNET",
+        "android.permission.USE_BIOMETRIC",
+        "android.permission.USE_FINGERPRINT",
+        "android.permission.NFC",
+        "android.permission.BODY_SENSORS",
+        "android.permission.ACTIVITY_RECOGNITION"
+      ],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [{ "scheme": "nexusai" }],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
+    },
+    "web": {
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://replit.com/"
+        }
+      ],
+      "expo-font",
+      "expo-web-browser",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Nexus AI accesses your photos to select images on your command.",
+          "cameraPermission": "Nexus AI uses the camera to take photos and videos for you."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Nexus AI uses your location to answer location-based questions.",
+          "isIosBackgroundLocationEnabled": true,
+          "isAndroidBackgroundLocationEnabled": true
+        }
+      ],
+      [
+        "expo-clipboard",
+        {}
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
